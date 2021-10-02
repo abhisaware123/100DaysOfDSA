@@ -3,14 +3,15 @@
 //if min is at end then array is rotated once //i.e. (size-index)%size
 // if mim element is at mid, size 8 (0,7) and mid 3 then rotation is 4
 // rotation are front to back
-//task : if the rotations are 
+//task : if the rotations are
 
 #include <bits/stdc++.h>
 using namespace std;
 
 //count of no. of rotation of sorted array
-int binarySearch(vector<int> v, int size)
+int binarySearch(vector<int> v)
 {
+    int size=v.size();
     int start = 0;
     int end = size - 1;
     int mid;
@@ -20,7 +21,7 @@ int binarySearch(vector<int> v, int size)
         mid = start + (end - start) / 2;
         if (v[start] <= v[end])
         {
-            return start;
+            return (size - start) % size;
         }
         else
         {
@@ -47,8 +48,8 @@ int binarySearch(vector<int> v, int size)
 }
 int main()
 {
-    vector<int> vect{11, 12, 15, 18, 2, 8, 9, 10};
-    cout << "Total no. of rotations are : " << binarySearch(vect, 7) << endl;
+    vector<int> vect{ 2,3,4,5,6,6,11, 12, 15, 18};
+    cout << "Total no. of rotations are : " << binarySearch(vect) << endl;
 
     return 0;
 }
